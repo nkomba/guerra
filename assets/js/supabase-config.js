@@ -1,24 +1,18 @@
 /* ==========================================================================
-   supabase-config.js — connect the site to your (free) Supabase backend
+   supabase-config.js — connect the site to your Supabase backend
    --------------------------------------------------------------------------
-   FILL IN THE TWO VALUES BELOW, then save. That's the only editing needed to
-   switch the site from "offline sample" mode to a live, dynamic backend.
+   These two values are filled in with THIS project's settings.
 
-   Where to find them:
-     Supabase dashboard → your project → Project Settings → API
-       • "Project URL"        → paste as SUPABASE_URL
-       • "anon" "public" key  → paste as SUPABASE_ANON_KEY
+     • SUPABASE_URL must be the PROJECT BASE URL only — no "/rest/v1/" on the
+       end. (The Supabase client adds "/rest/v1", "/auth/v1", "/storage/v1"
+       itself. db.js also strips a stray "/rest/v1" defensively, just in case.)
+     • SUPABASE_ANON_KEY is the PUBLISHABLE key (sb_publishable_...). It is
+       SAFE to ship in the browser: Row Level Security decides what it can do.
 
-   IMPORTANT
-     • The anon/public key is DESIGNED to be shared in a website. It is safe
-       here because Row Level Security (see supabase/schema.sql) controls what
-       it can actually do (submit only; no reading of private data).
-     • NEVER paste the "service_role" key into this file or anywhere in the
-       website — that key bypasses all security. Keep it secret.
-
-   Until you fill these in, the site runs in offline mode: the contribution
-   forms fall back to email/download and the live stories feed stays hidden.
+   NEVER put the "secret" / service_role key in this file or anywhere in the
+   website — that key bypasses all security. Keep it only in the Supabase
+   dashboard / server-side.
    ========================================================================== */
 
-window.SUPABASE_URL      = "https://YOUR-PROJECT.supabase.co";
-window.SUPABASE_ANON_KEY = "YOUR-ANON-PUBLIC-KEY";
+window.SUPABASE_URL      = "https://igzehzyjhgbzrivmckbg.supabase.co";
+window.SUPABASE_ANON_KEY = "sb_publishable_8lyMhQF8ed-WnL0q1QOxWw_zJSS07Nd";

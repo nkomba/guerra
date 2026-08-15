@@ -38,24 +38,25 @@ You do **not** need to be a programmer. You'll copy two keys and run one block o
 3. You should see "Success". This created the `submissions` table, the safe `public_stories` view,
    and all the security rules. (It's safe to run again if you ever need to.)
 
-## Step 3 — Copy your keys into the site
+## Step 3 — Your keys are already filled in
 
-1. In Supabase, open **Project Settings** (gear icon) → **API**.
-2. Find these two values:
-   - **Project URL** — looks like `https://abcdxyz.supabase.co`
-   - **Project API keys → `anon` `public`** — a long string starting with `ey...`
-3. Open **`assets/js/supabase-config.js`** in a text editor and paste them in:
+`assets/js/supabase-config.js` is already set to this project:
 
-   ```js
-   window.SUPABASE_URL      = "https://abcdxyz.supabase.co";   // your Project URL
-   window.SUPABASE_ANON_KEY = "eyJhbGciOi...your-anon-key...";  // your anon public key
-   ```
+```js
+window.SUPABASE_URL      = "https://igzehzyjhgbzrivmckbg.supabase.co";
+window.SUPABASE_ANON_KEY = "sb_publishable_8lyMhQF8ed-WnL0q1QOxWw_zJSS07Nd";
+```
 
-4. Save the file.
+Two things to know:
 
-> **Is the anon key safe to publish?** Yes. It is designed to live in a public website; the database
-> security rules decide what it can do (submit only). **Never** paste the `service_role` key anywhere
-> in the website — that one bypasses security. Keep it secret.
+- **The URL is the base project URL — no `/rest/v1/` on the end.** The Supabase client adds that
+  itself. (If you ever re-paste it, use `https://igzehzyjhgbzrivmckbg.supabase.co`, not the REST URL.
+  `db.js` also strips a stray `/rest/v1` defensively.)
+- **The key is your publishable key (`sb_publishable_…`)**, which is the correct key for browser code.
+  It is safe to publish; Row Level Security decides what it can do. **Never** put the `secret` /
+  `service_role` key in the website — that one bypasses all security.
+
+> If you ever rotate the publishable key in Supabase, update it here and redeploy.
 
 ## Step 4 — Create the curator login
 
@@ -64,6 +65,17 @@ You do **not** need to be a programmer. You'll copy two keys and run one block o
    the account is active immediately.
 3. Recommended: open **Authentication → Sign In / Providers** and **turn OFF "Allow new users to sign
    up."** This means only accounts you create by hand (like the curator) can ever log in.
+4. **Mark that user as the curator.** A profile row is created automatically the first time they sign
+   in. To grant curator powers, open **SQL Editor** and run (using the user's id from Authentication →
+   Users):
+
+   ```sql
+   update public.profiles set role = 'curator' where id = '<THE-USER-UUID>';
+   ```
+
+   Until you do this, signing in to `admin.html` shows a yellow banner and you'll only see your own
+   submissions — that's the security model working (only curators can read everyone's submissions and
+   approve content). The banner shows the exact id to paste.
 
 ## Step 5 — Publish the updated site
 
@@ -126,16 +138,37 @@ deployed). The new/changed files are listed at the bottom of this guide. Once li
 
 ---
 
+## Photos & family-member accounts (optional)
+
+`schema.sql` also creates two storage buckets and a small family-history data model:
+
+- **`family-photos`** (private): where signed-in family members upload photos/scans, into a folder
+  named after their own user id. Only the uploader and the curator can see them.
+- **`public-photos`** (public): where the curator places approved, non-sensitive images for public
+  display.
+
+Uploading a file requires sign-in (anonymous file uploads are an abuse risk and photos can show living
+people). On the Contribute → *photo* tab, signed-in users see a real uploader; everyone else uses the
+describe-and-email flow, which still works. To let a relative upload, create them a user in
+Authentication → Users (leave their profile role as the default `member`).
+
+The schema also adds `people`, `relationships`, `family_branches`, `places`, `stories`, `sources`, and
+`photos` tables with moderation fields, plus public-safe views (`public_people`, `public_stories`, …).
+The public family tree still reads `data/family.js` for now; when you're ready to move the tree into
+the database, the `public_people` / `public_relationships` views and `GuerraDB.people()` reader are
+already in place.
+
 ## Files added or changed for the backend
 
 ```
-NEW   supabase/schema.sql              Database tables, view, and security rules
-NEW   assets/js/supabase-config.js     ← paste your two keys here
-NEW   assets/js/db.js                  Small data layer (submit + fetch stories)
-NEW   assets/js/admin.js               Dashboard logic
+NEW   supabase/schema.sql              Full data model, public-safe views, RLS, storage buckets/policies
+EDIT  assets/js/supabase-config.js     Your Project URL + publishable key (already filled in)
+EDIT  assets/js/db.js                  Data layer: submit + readers (stories/people/branches/photos), URL-safe
+NEW   assets/js/storage.js             Signed-in photo uploader → family-photos bucket
+NEW   assets/js/admin.js               Dashboard logic (curator check + reviewed_by)
 NEW   admin.html                       Private curator dashboard
-NEW   docs/SUPABASE-SETUP.md           This guide
-EDIT  assets/js/forms.js               Forms now submit online (email/download kept)
-EDIT  contribute.html                  Loads the backend scripts; forms tagged by type
+EDIT  docs/SUPABASE-SETUP.md           This guide
+EDIT  assets/js/forms.js               Forms submit online (email/download kept)
+EDIT  contribute.html                  Loads backend scripts; photo uploader slot; forms tagged by type
 EDIT  stories.html                     Adds the live "Shared by the family" feed
 ```

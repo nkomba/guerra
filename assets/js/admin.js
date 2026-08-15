@@ -22,6 +22,8 @@
   var TYPE_LABEL = { story: "Story", photo: "Photo / document", correction: "Correction", new_person: "New relative", lead: "Research lead" };
   var EV = ["confirmed", "likely", "unverified", "tradition"];
   var currentFilter = "pending";
+  var currentUid = null;     // set once signed in — stamped as reviewed_by
+  var isCurator = false;     // whether this account is marked curator in profiles
 
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function show(view) {
@@ -30,12 +32,33 @@
   }
 
   // ---- session ------------------------------------------------------
+  function onSignedIn(session) {
+    currentUid = session && session.user ? session.user.id : null;
+    show("dash");
+    verifyCurator().then(load);
+  }
   client.auth.getSession().then(function (r) {
-    if (r.data && r.data.session) { show("dash"); load(); } else { show("login"); }
-  });
+    if (r && r.data && r.data.session) onSignedIn(r.data.session); else show("login");
+  }, function () { show("login"); });
   client.auth.onAuthStateChange(function (_e, session) {
-    if (session) { show("dash"); load(); } else { show("login"); }
+    if (session) onSignedIn(session); else show("login");
   });
+
+  // Confirm this account is marked as the curator; warn clearly if not.
+  function verifyCurator() {
+    var banner = $("curator-banner");
+    return client.from("profiles").select("role").eq("id", currentUid).maybeSingle().then(function (r) {
+      isCurator = !!(r && r.data && r.data.role === "curator");
+      if (banner) {
+        if (isCurator) { banner.hidden = true; }
+        else {
+          banner.hidden = false;
+          banner.innerHTML = "<strong>This account isn't marked as a curator yet.</strong> You'll only see your own submissions until it is. " +
+            "In Supabase, run: <code>update public.profiles set role='curator' where id='" + (currentUid || "&lt;your-user-id&gt;") + "';</code> then reload.";
+        }
+      }
+    }, function () { /* profiles not reachable — leave banner as-is */ });
+  }
 
   // ---- login / logout ----------------------------------------------
   $("login-form").addEventListener("submit", function (e) {
@@ -138,8 +161,8 @@
     }
 
     var patch = gather(card);
-    if (act === "approve") patch.status = "approved";
-    if (act === "reject") patch.status = "rejected";
+    if (act === "approve") { patch.status = "approved"; patch.reviewed_by = currentUid; }
+    if (act === "reject")  { patch.status = "rejected"; patch.reviewed_by = currentUid; }
     cardMsg(card, "Saving…");
     client.from("submissions").update(patch).eq("id", id).then(function (r) {
       if (r.error) { cardMsg(card, "Error: " + r.error.message); return; }
