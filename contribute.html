@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contribute — The Guerra Family of Freixo da Serra</title>
+  <meta name="description" content="Share stories, photos, corrections, new relatives, and research leads with the Guerra family project. No account needed — submit by email or downloadable file.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 6 10v12c0 11 8 18 18 23 10-5 18-12 18-23V10z' fill='%232f5d50'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="contribute">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="section">
+      <div class="wrap measure">
+        <p class="eyebrow">Contribute</p>
+        <h1>Share what you know</h1>
+        <p class="lead">This whole project depends on relatives like you. A story, a photograph, a
+           correction, a name we're missing, a hint about where to look next — every piece helps. You
+           don't need an account, and nothing you send is published without review.</p>
+        <div class="note">
+          <strong>How submitting works.</strong> Because this is a simple, private family site, each form
+          gives you two easy ways to send your contribution to the family curator: <strong>open a
+          pre-filled email</strong>, or <strong>download a neat file</strong> you can email or attach
+          photos to. Pick whichever you prefer — both go to
+          <a data-curator-email href="#">the curator</a>.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <!-- Tabs -->
+        <div class="form-tabs" role="tablist" aria-label="Choose what to contribute">
+          <button class="form-tab" role="tab" aria-selected="true"  data-target="panel-story">📖 A story or memory</button>
+          <button class="form-tab" role="tab" aria-selected="false" data-target="panel-photo">📷 A photo or document</button>
+          <button class="form-tab" role="tab" aria-selected="false" data-target="panel-correction">✏️ A correction</button>
+          <button class="form-tab" role="tab" aria-selected="false" data-target="panel-person">👤 A new relative / branch</button>
+          <button class="form-tab" role="tab" aria-selected="false" data-target="panel-lead">🔎 A research lead</button>
+        </div>
+
+        <div class="grid" style="grid-template-columns:1.4fr .9fr;gap:2rem;align-items:start">
+          <div>
+            <!-- STORY -->
+            <div class="form-panel is-active" id="panel-story">
+              <form class="form-card contrib-form" data-type="Story or Memory">
+                <h2 class="mt-0">Share a story or memory</h2>
+                <p class="muted">Oral histories, sayings, traditions, milestones — in your own words.</p>
+                <div class="field"><label for="s-title">Story title <span class="req">*</span></label>
+                  <input id="s-title" name="title" required placeholder="e.g. The house on the high ground"></div>
+                <div class="field"><label for="s-about">Who or what is it about?</label>
+                  <p class="hint">Names, a branch, a place, or an approximate time period.</p>
+                  <input id="s-about" name="about" placeholder="e.g. My grandfather José Guerra, Gouveia, 1930s"></div>
+                <div class="field"><label for="s-story">The story <span class="req">*</span></label>
+                  <textarea id="s-story" name="story" required placeholder="Tell it however you remember it…"></textarea></div>
+                <div class="field"><label for="s-how">How do you know this?</label>
+                  <p class="hint">Helps us label it fairly (e.g. "told by my mother", "from a letter", "family tradition").</p>
+                  <input id="s-how" name="how_known" placeholder="e.g. Told to me by my aunt in 1998"></div>
+                <div class="field"><label for="s-name">Your name (optional)</label>
+                  <input id="s-name" name="contributor" placeholder="So we can credit you — or leave blank to stay anonymous"></div>
+                <div class="field"><label for="s-email">Your email (optional)</label>
+                  <p class="hint">Only used if the curator needs to ask a follow-up question.</p>
+                  <input id="s-email" name="email" type="email" placeholder="you@example.com"></div>
+                <div class="btn-row">
+                  <button type="button" class="btn btn--primary" data-action="email">Open email to send</button>
+                  <button type="button" class="btn btn--ghost" data-action="download">Download as a file</button>
+                </div>
+                <div class="form-status"></div>
+              </form>
+            </div>
+
+            <!-- PHOTO -->
+            <div class="form-panel" id="panel-photo">
+              <form class="form-card contrib-form" data-type="Photo or Document">
+                <h2 class="mt-0">Add a photo or document</h2>
+                <p class="muted">Describe the item here, then attach the actual file to your email.</p>
+                <div class="note" style="margin-bottom:1.1rem">Files can't upload directly on this simple site.
+                  Fill this in, choose <strong>Open email</strong> or <strong>Download</strong>, then
+                  <strong>attach the photo/scan to the email</strong> you send to the curator.</div>
+                <div class="field"><label for="p-what">What is it? <span class="req">*</span></label>
+                  <input id="p-what" name="item" required placeholder="e.g. Wedding photograph, baptism certificate, letter"></div>
+                <div class="field"><label for="p-who">Who / what does it show?</label>
+                  <input id="p-who" name="depicts" placeholder="Names of people, place, event"></div>
+                <div class="field"><label for="p-when">Approximate date</label>
+                  <input id="p-when" name="date" placeholder="e.g. about 1920, or 'unknown'"></div>
+                <div class="field"><label for="p-owner">Who owns / holds the original?</label>
+                  <p class="hint">Important for permissions and crediting.</p>
+                  <input id="p-owner" name="owner" placeholder="e.g. Held by my family; happy to share a scan"></div>
+                <div class="field"><label for="p-rights">Do you have the right to share it? <span class="req">*</span></label>
+                  <select id="p-rights" name="rights" required>
+                    <option value="">Please choose…</option>
+                    <option>Yes — it's our family's own photo/document</option>
+                    <option>Yes — I have permission from the owner</option>
+                    <option>Not sure — please advise</option>
+                  </select></div>
+                <div class="field"><label for="p-name">Your name (optional)</label>
+                  <input id="p-name" name="contributor" placeholder="For crediting"></div>
+                <div class="btn-row">
+                  <button type="button" class="btn btn--primary" data-action="email">Open email to send</button>
+                  <button type="button" class="btn btn--ghost" data-action="download">Download as a file</button>
+                </div>
+                <div class="form-status"></div>
+              </form>
+            </div>
+
+            <!-- CORRECTION -->
+            <div class="form-panel" id="panel-correction">
+              <form class="form-card contrib-form" data-type="Correction">
+                <h2 class="mt-0">Suggest a correction</h2>
+                <p class="muted">Spotted a wrong date, a misspelled name, or a mixed-up relationship? Thank you.</p>
+                <div class="field"><label for="c-where">What should we look at? <span class="req">*</span></label>
+                  <p class="hint">Name the person, page, or story that needs fixing.</p>
+                  <input id="c-where" name="location" required placeholder="e.g. Manuel Guerra (b. 1848) on the family tree"></div>
+                <div class="field"><label for="c-says">What does it currently say?</label>
+                  <input id="c-says" name="current" placeholder="The detail as it appears now"></div>
+                <div class="field"><label for="c-should">What should it say? <span class="req">*</span></label>
+                  <textarea id="c-should" name="correction" required placeholder="The corrected information"></textarea></div>
+                <div class="field"><label for="c-evidence">What's your evidence?</label>
+                  <p class="hint">A record, a document, personal knowledge, or family tradition — anything helps.</p>
+                  <textarea id="c-evidence" name="evidence" placeholder="e.g. Civil birth certificate gives 1849, not 1848"></textarea></div>
+                <div class="field"><label for="c-name">Your name (optional)</label>
+                  <input id="c-name" name="contributor"></div>
+                <div class="field"><label for="c-email">Your email (optional)</label>
+                  <input id="c-email" name="email" type="email" placeholder="For follow-up questions"></div>
+                <div class="btn-row">
+                  <button type="button" class="btn btn--primary" data-action="email">Open email to send</button>
+                  <button type="button" class="btn btn--ghost" data-action="download">Download as a file</button>
+                </div>
+                <div class="form-status"></div>
+              </form>
+            </div>
+
+            <!-- NEW PERSON / BRANCH -->
+            <div class="form-panel" id="panel-person">
+              <form class="form-card contrib-form" data-type="New Relative or Branch">
+                <h2 class="mt-0">Add a relative or a new branch</h2>
+                <p class="muted">Tell us about someone missing from the tree. Fill in whatever you know —
+                   blanks are fine.</p>
+                <div class="field"><label for="n-name">Full name <span class="req">*</span></label>
+                  <input id="n-name" name="full_name" required placeholder="Given name(s) and surname"></div>
+                <div class="grid grid-2" style="gap:1rem">
+                  <div class="field"><label for="n-bdate">Birth date</label>
+                    <input id="n-bdate" name="birth_date" placeholder="e.g. 1876, or 'about 1880'"></div>
+                  <div class="field"><label for="n-bplace">Birth place</label>
+                    <input id="n-bplace" name="birth_place" placeholder="Parish, town, country"></div>
+                  <div class="field"><label for="n-ddate">Death date</label>
+                    <input id="n-ddate" name="death_date" placeholder="If known"></div>
+                  <div class="field"><label for="n-dplace">Death place</label>
+                    <input id="n-dplace" name="death_place" placeholder="If known"></div>
+                </div>
+                <div class="field"><label for="n-parents">Parents</label>
+                  <input id="n-parents" name="parents" placeholder="Names of mother and/or father"></div>
+                <div class="field"><label for="n-spouse">Spouse(s)</label>
+                  <input id="n-spouse" name="spouses" placeholder="Name(s) of husband/wife"></div>
+                <div class="field"><label for="n-children">Children</label>
+                  <input id="n-children" name="children" placeholder="Names, separated by commas"></div>
+                <div class="field"><label for="n-living">Is this person living?</label>
+                  <select id="n-living" name="living">
+                    <option>No — deceased</option>
+                    <option>Yes — living (details will be protected)</option>
+                    <option>Not sure</option>
+                  </select></div>
+                <div class="field"><label for="n-sources">How do you know / any sources?</label>
+                  <textarea id="n-sources" name="sources" placeholder="Records, documents, or family knowledge"></textarea></div>
+                <div class="field"><label for="n-name2">Your name (optional)</label>
+                  <input id="n-name2" name="contributor"></div>
+                <div class="field"><label for="n-email">Your email (optional)</label>
+                  <input id="n-email" name="email" type="email"></div>
+                <div class="btn-row">
+                  <button type="button" class="btn btn--primary" data-action="email">Open email to send</button>
+                  <button type="button" class="btn btn--ghost" data-action="download">Download as a file</button>
+                </div>
+                <div class="form-status"></div>
+              </form>
+            </div>
+
+            <!-- RESEARCH LEAD -->
+            <div class="form-panel" id="panel-lead">
+              <form class="form-card contrib-form" data-type="Research Lead">
+                <h2 class="mt-0">Submit a research lead</h2>
+                <p class="muted">A hunch, a record you found, a place to look, or a possible connection to
+                   investigate. Leads are marked "unverified" until confirmed.</p>
+                <div class="field"><label for="l-lead">The lead <span class="req">*</span></label>
+                  <textarea id="l-lead" name="lead" required placeholder="e.g. A Guerra baptism in Seia in 1885 might be our missing Ana"></textarea></div>
+                <div class="field"><label for="l-source">Where does this come from?</label>
+                  <p class="hint">A record reference, a website, a family claim. Please describe it in your own
+                     words rather than pasting paid-database content.</p>
+                  <input id="l-source" name="source" placeholder="e.g. Parish index at the district archive"></div>
+                <div class="field"><label for="l-next">Suggested next step</label>
+                  <input id="l-next" name="next_step" placeholder="e.g. Check the 1885 baptism register for Seia parish"></div>
+                <div class="field"><label for="l-name">Your name (optional)</label>
+                  <input id="l-name" name="contributor"></div>
+                <div class="field"><label for="l-email">Your email (optional)</label>
+                  <input id="l-email" name="email" type="email"></div>
+                <div class="btn-row">
+                  <button type="button" class="btn btn--primary" data-action="email">Open email to send</button>
+                  <button type="button" class="btn btn--ghost" data-action="download">Download as a file</button>
+                </div>
+                <div class="form-status"></div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Sidebar guidance -->
+          <aside class="stack">
+            <div class="card">
+              <h3 class="mt-0">What evidence helps</h3>
+              <p>You never need "proof" to contribute — but if you have any of these, please mention them:</p>
+              <ul style="margin-bottom:0">
+                <li>Names, dates, and places (even approximate)</li>
+                <li>A record type and where it's held (parish, civil registry, archive)</li>
+                <li>A photograph, letter, or certificate you can attach</li>
+                <li>Who told you, and roughly when</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3 class="mt-0">How review works</h3>
+              <ol style="margin-bottom:0">
+                <li>You send a contribution.</li>
+                <li>The curator reads it and may follow up with a question.</li>
+                <li>It's checked for clarity, privacy, and documentation quality.</li>
+                <li>It's added with an honest evidence label — or held while we look into it.</li>
+              </ol>
+              <p class="muted" style="font-size:.88rem;margin:.8rem 0 0">Submissions may be lightly edited
+                 for clarity, privacy, and documentation quality before publishing.</p>
+            </div>
+            <div class="note">
+              <strong>Please protect living people.</strong> Don't submit private details about someone
+              living without their consent. See our <a href="privacy.html">Privacy &amp; Ethics</a> policy.
+            </div>
+            <div class="note">
+              <strong>Please don't paste paywalled content.</strong> If you found something on a paid site
+              like Ancestry, summarise it in your own words and tell us where to look — don't copy record
+              images or text. Here's <a href="sources.html">why</a>.
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>

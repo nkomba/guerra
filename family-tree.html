@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Family Tree — The Guerra Family of Freixo da Serra</title>
+  <meta name="description" content="Browse the Guerra family tree by generation, branch, place, or name. Every person shows an evidence status and its sources; living relatives are protected.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 6 10v12c0 11 8 18 18 23 10-5 18-12 18-23V10z' fill='%232f5d50'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="tree">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Family tree</p>
+        <h1>Browse the family</h1>
+        <p class="lead">Search and filter the family by name, place, branch, or generation. Select any
+           person to see their dates, relatives, notes, and the sources behind each fact. The coloured
+           tag on each card shows how well that person is documented.</p>
+
+        <!-- Evidence legend -->
+        <div class="badge-legend" aria-label="Evidence status key">
+          <span class="tag tag--confirmed">Confirmed</span>
+          <span class="tag tag--likely">Likely</span>
+          <span class="tag tag--unverified">Unverified</span>
+          <span class="tag tag--tradition">Family tradition</span>
+          <span class="tag tag--living">Living – protected</span>
+        </div>
+        <p class="muted" style="font-size:.9rem;margin-top:-.3rem">
+          New here? See what each label means in <a href="sources.html">Sources &amp; Method</a>.
+          Living relatives' details are hidden automatically to protect privacy.</p>
+
+        <!-- Toolbar -->
+        <div class="tree-toolbar" role="search">
+          <label class="visually-hidden" for="tree-search">Search people by name or place</label>
+          <input type="search" id="tree-search" placeholder="Search name or place…" autocomplete="off">
+          <label class="visually-hidden" for="filter-branch">Filter by branch</label>
+          <select id="filter-branch"><option value="">All branches</option></select>
+          <label class="visually-hidden" for="filter-gen">Filter by generation</label>
+          <select id="filter-gen"><option value="">All generations</option></select>
+          <label class="visually-hidden" for="filter-status">Filter by evidence status</label>
+          <select id="filter-status">
+            <option value="">All evidence</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="likely">Likely</option>
+            <option value="unverified">Unverified</option>
+            <option value="tradition">Family tradition</option>
+            <option value="living">Living</option>
+          </select>
+          <span class="tree-count" id="tree-count" aria-live="polite"></span>
+        </div>
+
+        <!-- The tree renders here -->
+        <div id="tree" class="tree" aria-live="polite"></div>
+
+        <div class="note" style="margin-top:1.5rem">
+          <strong>The people shown are illustrative sample entries</strong> to demonstrate the tree.
+          They are replaced by editing <code>data/family.js</code> — see the
+          <a href="contribute.html">Contribute</a> page or the editing guide included with the site.
+          Missing a relative? <a href="contribute.html">Add them here.</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap callout" style="display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center">
+        <div style="flex:1;min-width:16rem">
+          <h3>See a name that's missing, or a date that's wrong?</h3>
+          <p class="mb-0">Every correction makes the tree stronger. It only takes a minute, and no account is needed.</p>
+        </div>
+        <a class="btn btn--primary" href="contribute.html">Add or correct a person</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Person detail dialog -->
+  <dialog id="person-modal" class="person-modal" aria-label="Person details">
+    <div class="modal__head"></div>
+    <div class="modal__body"></div>
+  </dialog>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/main.js"></script>
+  <script src="data/family.js"></script>
+  <script src="assets/js/tree.js"></script>
+</body>
+</html>

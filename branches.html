@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Family Branches — The Guerra Family of Freixo da Serra</title>
+  <meta name="description" content="The branches of the Guerra family — paternal and maternal lines, key ancestors, and migration paths from Freixo da Serra outward.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 6 10v12c0 11 8 18 18 23 10-5 18-12 18-23V10z' fill='%232f5d50'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="branches">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="section">
+      <div class="wrap">
+        <div class="measure">
+          <p class="eyebrow">Family branches</p>
+          <h1>The lines of the family</h1>
+          <p class="lead">A large family is really a set of branches — lines that share a common root but
+             grow their own way. Here are the branches we are tracing, the key ancestors who anchor each
+             one, and the paths that carried some of them far from the Serra da Estrela.</p>
+        </div>
+
+        <div id="branch-cards" class="grid grid-2" style="margin-top:1.5rem"></div>
+
+        <div class="note" style="margin-top:1.5rem">
+          Branches shown here come from <code>data/family.js</code> and are illustrative examples.
+          As the family is documented, branches can be added, split, or renamed there.
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap measure">
+        <p class="eyebrow">Maternal &amp; paternal lines</p>
+        <h2>How we record both sides</h2>
+        <p>A family history that follows only the surname misses half the story. Where the records allow,
+           we trace <strong>maternal lines</strong> — the mothers, grandmothers, and the families they came
+           from — alongside the paternal Guerra line. Married-in families such as the Nunes, Figueiredo,
+           Lopes, and Ramos names appear in the tree for exactly this reason.</p>
+        <p>On the <a href="family-tree.html">family tree</a>, you can filter by branch to follow a single
+           line, and each person's card links to their parents, spouse, and children so you can move
+           between the branches freely.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap measure">
+        <p class="eyebrow">Migration paths</p>
+        <h2>From Freixo da Serra outward</h2>
+        <p>From a single mountain parish, the family spread in stages: first to the mill town of Gouveia,
+           then to Lisbon, and — in the emigration years around the turn of the 20th century — overseas.
+           Tracing these paths is one of the most active parts of the project, and one where we most need
+           help from relatives living abroad.</p>
+        <ul class="timeline" style="margin-top:1rem">
+          <li><span class="yr">Local</span> Freixo da Serra &rarr; Figueiró da Serra &amp; neighbouring parishes (marriage and land ties).</li>
+          <li><span class="yr">Regional</span> Freixo da Serra &rarr; Gouveia town &rarr; Lisbon (work in the wool and textile trades, then the capital).</li>
+          <li><span class="yr">Overseas</span> Serra da Estrela &rarr; Brazil <span class="tag tag--unverified">Under review</span> — passenger records being sought.</li>
+        </ul>
+        <div class="callout" style="margin-top:1.5rem">
+          <h3>Are you a descendant of an emigrant branch?</h3>
+          <p class="mb-0">If your family left Portugal generations ago and you suspect a connection to
+             Freixo da Serra, you may be the missing link for one of these branches.
+             <a href="contribute.html">Tell us what you know.</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/main.js"></script>
+  <script src="data/family.js"></script>
+  <script>
+    /* Render branch cards from the shared family data (no network needed). */
+    (function () {
+      var data = window.GUERRA_DATA; if (!data) return;
+      var wrap = document.getElementById("branch-cards");
+      var counts = {};
+      data.people.forEach(function (p) { counts[p.branch] = (counts[p.branch] || 0) + 1; });
+      function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+      wrap.innerHTML = (data.branches || []).map(function (b) {
+        return '<article class="card">' +
+          '<span class="pill">' + (counts[b.id] || 0) + ' people recorded</span>' +
+          '<h3 style="margin-top:.6rem">' + esc(b.name) + '</h3>' +
+          '<p><strong>' + esc(b.lead) + '</strong></p>' +
+          '<p>' + esc(b.description) + '</p>' +
+          '<dl class="kv" style="grid-template-columns:auto 1fr">' +
+            '<dt>Key ancestors</dt><dd>' + esc(b.keyAncestors) + '</dd>' +
+            '<dt>Migration</dt><dd>' + esc(b.migration) + '</dd>' +
+          '</dl>' +
+          '<a class="btn btn--ghost btn--sm" href="family-tree.html">View this branch in the tree</a>' +
+        '</article>';
+      }).join("");
+    })();
+  </script>
+</body>
+</html>
