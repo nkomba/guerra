@@ -70,6 +70,165 @@
       </div>
     </section>
 
+    <!-- IMAGE GALLERY — contemporary reference photos (Wikimedia Commons) -->
+    <style>
+      /* Scoped gallery styles; reuse the site's existing colour tokens. */
+      .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem;margin-top:1.1rem}
+      .gallery figure{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;max-width:520px}
+      .gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#f2ead9;display:block}
+      .gallery figcaption{padding:.85rem .95rem}
+      .gallery .ref{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--terracotta);margin-bottom:.35rem}
+      .gallery .cap{color:var(--ink-soft);font-size:.92rem;margin:0 0 .4rem}
+      .gallery .credit{color:var(--muted);font-size:.78rem;margin:0}
+      .gallery .credit a{color:var(--muted)}
+      .gallery figure.todo{background:#faf7ee;border-style:dashed;border-color:#e3cf9c}
+      .gallery h3{margin:2rem 0 .2rem}
+    </style>
+    <section class="section section--paper" style="border-top:1px solid var(--line)">
+      <div class="wrap">
+        <p class="eyebrow">A visual sense of the place</p>
+        <h2>Freixo da Serra &amp; the Serra da Estrela in pictures</h2>
+        <p class="measure">These are <strong>contemporary reference photographs</strong> of the village, its
+           church and monuments, and the surrounding mountains — present-day municipal and tourism images that
+           help set the scene, <em>not</em> original family or archival photographs. Images are sourced from
+           <a href="https://commons.wikimedia.org/wiki/Category:Freixo_da_Serra">Wikimedia Commons</a> (freely
+           licensed). Slots marked “reference photo to add” are ready for a verified image — each links to
+           where to find it.</p>
+
+        <div class="gallery">
+
+          <h3>Village &amp; Landscape</h3>
+          <div class="gallery-grid">
+            <figure>
+              <img loading="lazy"
+                   src="https://commons.wikimedia.org/wiki/Special:FilePath/Covilha,_view_from_Serra_da_Estrela.jpg?width=1024"
+                   alt="Wide view over the hills and valleys of the Serra da Estrela near Gouveia, with fields and distant mountains.">
+              <figcaption>
+                <span class="ref">Contemporary reference photo</span>
+                <p class="cap">Rolling hills and terraced country of the Serra da Estrela around Gouveia — a regional stand-in for the Freixo da Serra landscape until a village-specific wide view is added.</p>
+                <p class="credit">Source: <a href="https://commons.wikimedia.org/wiki/File:Covilha,_view_from_Serra_da_Estrela.jpg">Wikimedia Commons</a></p>
+              </figcaption>
+            </figure>
+            <!-- Freixo-specific aerial/wide view: verify a file in the Commons category and paste its URL below. -->
+            <figure class="todo">
+              <img data-todo alt="Aerial or wide-angle view of Freixo da Serra village showing rooftops, fields, and the Serra da Estrela behind.">
+              <figcaption>
+                <span class="ref">Reference photo to add</span>
+                <p class="cap">A wide or aerial view of Freixo da Serra itself — rooftops, fields, and the mountains behind.</p>
+                <p class="credit">Find &amp; paste from <a href="https://commons.wikimedia.org/wiki/Category:Freixo_da_Serra">Commons: Category:Freixo&nbsp;da&nbsp;Serra</a></p>
+                <!-- Replace the img above with, e.g.:
+                     <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/FILE_NAME.jpg?width=1024" alt="Freixo da Serra village, wide view"> -->
+              </figcaption>
+            </figure>
+          </div>
+
+          <h3>Serra da Estrela</h3>
+          <div class="gallery-grid">
+            <figure>
+              <img loading="lazy"
+                   src="https://commons.wikimedia.org/wiki/Special:FilePath/Serra_da_Estrela_Nevada.JPG?width=1024"
+                   alt="Snow-covered peaks and rocky terrain of the Serra da Estrela mountain range in winter.">
+              <figcaption>
+                <span class="ref">Contemporary reference photo</span>
+                <p class="cap">Snow-capped peaks of the Serra da Estrela — the highest range in mainland Portugal and the backdrop to the parish.</p>
+                <p class="credit">Source: <a href="https://commons.wikimedia.org/wiki/File:Serra_da_Estrela_Nevada.JPG">Wikimedia Commons</a></p>
+              </figcaption>
+            </figure>
+            <figure>
+              <img loading="lazy"
+                   src="https://commons.wikimedia.org/wiki/Special:FilePath/Torre-Serra_da_Estrela.JPG?width=1024"
+                   alt="Rocky high-altitude terrain near Torre, the highest point of the Serra da Estrela.">
+              <figcaption>
+                <span class="ref">Contemporary reference photo</span>
+                <p class="cap">The rocky heights near Torre, the summit of the Serra da Estrela.</p>
+                <p class="credit">Source: <a href="https://commons.wikimedia.org/wiki/File:Torre-Serra_da_Estrela.JPG">Wikimedia Commons</a></p>
+              </figcaption>
+            </figure>
+          </div>
+
+          <h3>Parish Church — Igreja Matriz (Nossa Senhora da Expectação)</h3>
+          <div class="gallery-grid">
+            <figure class="todo">
+              <img data-todo alt="Stone parish church of Freixo da Serra with bell tower and red tile roof.">
+              <figcaption>
+                <span class="ref">Reference photo to add</span>
+                <p class="cap">The Igreja Matriz de Freixo da Serra — stone church, bell tower, red tile roof.</p>
+                <p class="credit">Find &amp; paste from <a href="https://commons.wikimedia.org/wiki/Category:Freixo_da_Serra">Commons: Category:Freixo&nbsp;da&nbsp;Serra</a></p>
+                <!-- <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/FILE_NAME.jpg?width=1024" alt="Igreja Matriz de Freixo da Serra"> -->
+              </figcaption>
+            </figure>
+            <figure class="todo">
+              <img data-todo alt="Detail of the church facade or a stained-glass window at Freixo da Serra.">
+              <figcaption>
+                <span class="ref">Reference photo to add</span>
+                <p class="cap">A facade detail or stained-glass window of the parish church, if available.</p>
+                <p class="credit">Find &amp; paste from <a href="https://commons.wikimedia.org/wiki/Category:Freixo_da_Serra">Commons: Category:Freixo&nbsp;da&nbsp;Serra</a></p>
+              </figcaption>
+            </figure>
+          </div>
+
+          <h3>Village Square &amp; Cruzeiro</h3>
+          <div class="gallery-grid">
+            <figure class="todo">
+              <img data-todo alt="Largo do Adro village square at Freixo da Serra with the stone cruzeiro (memorial cross) outside the church.">
+              <figcaption>
+                <span class="ref">Reference photo to add</span>
+                <p class="cap">The Largo do Adro and its <em>cruzeiro</em> — the stone cross typically set outside a Portuguese parish church.</p>
+                <p class="credit">Find &amp; paste from <a href="https://commons.wikimedia.org/wiki/Category:Freixo_da_Serra">Commons: Category:Freixo&nbsp;da&nbsp;Serra</a></p>
+              </figcaption>
+            </figure>
+          </div>
+
+          <h3>Ethnographic Museum (Museu Padre Dr. Jorge Gouveia)</h3>
+          <div class="gallery-grid">
+            <figure class="todo">
+              <img data-todo alt="Interior of the Freixo da Serra ethnographic museum with traditional agricultural tools and old photographs displayed on stone walls.">
+              <figcaption>
+                <span class="ref">Reference photo to add</span>
+                <p class="cap">Museum interior — traditional farming tools and old photographs on stone walls.</p>
+                <p class="credit">Find &amp; paste from <a href="https://commons.wikimedia.org/wiki/Category:Freixo_da_Serra">Commons: Category:Freixo&nbsp;da&nbsp;Serra</a></p>
+              </figcaption>
+            </figure>
+          </div>
+
+          <h3>Heraldry</h3>
+          <div class="gallery-grid">
+            <figure class="todo">
+              <img data-todo alt="Coat of arms / heraldic shield of Freixo da Serra featuring a church, tree, tower, and cross.">
+              <figcaption>
+                <span class="ref">Reference image to add</span>
+                <p class="cap">The parish coat of arms — a church, tree, tower, and cross motif.</p>
+                <p class="credit">Search <a href="https://commons.wikimedia.org/w/index.php?search=Freixo%20da%20Serra%20bras%C3%A3o&title=Special:MediaSearch&type=image">Commons for “Freixo da Serra brasão”</a></p>
+              </figcaption>
+            </figure>
+          </div>
+
+        </div>
+
+        <p class="muted" style="font-size:.82rem;margin-top:1.5rem">Reference photographs are used under the free
+           licences on Wikimedia Commons; please keep the source links for attribution. They illustrate the
+           present-day village and region and are not part of the family's archival record. Verify each “to add”
+           slot before publishing and swap in the correct Commons image URL.</p>
+      </div>
+    </section>
+    <script>
+      /* Fill "to add" slots with a tidy placeholder, and fall back to the same
+         placeholder if any remote image fails to load — so the layout never breaks. */
+      (function () {
+        var PH = "data:image/svg+xml," + encodeURIComponent(
+          '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300">' +
+          '<rect width="400" height="300" fill="#f2ead9"/>' +
+          '<rect x="8" y="8" width="384" height="284" fill="none" stroke="#d9c79a" stroke-width="3" stroke-dasharray="9 9"/>' +
+          '<g fill="#a4966f" text-anchor="middle" font-family="Georgia, serif">' +
+          '<text x="200" y="146" font-size="21">Reference photo to add</text>' +
+          '<text x="200" y="176" font-size="13">see the credit link below</text></g></svg>');
+        document.querySelectorAll('.gallery img').forEach(function (img) {
+          img.addEventListener('error', function () { if (img.src !== PH) img.src = PH; });
+          if (img.hasAttribute('data-todo')) img.src = PH;
+        });
+      })();
+    </script>
+
     <!-- TIMELINE -->
     <section class="section section--tint">
       <div class="wrap measure">
