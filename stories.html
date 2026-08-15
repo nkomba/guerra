@@ -27,6 +27,16 @@
       </div>
     </section>
 
+    <!-- Live feed: approved stories from the backend (hidden until there are any) -->
+    <section class="section" id="live-stories-section" hidden>
+      <div class="wrap">
+        <p class="eyebrow">Shared by the family</p>
+        <h2 class="mb-0">Recently added stories</h2>
+        <p class="muted">Submitted by relatives and approved by the curator.</p>
+        <div id="live-stories" class="grid grid-3" style="margin-top:1.5rem"></div>
+      </div>
+    </section>
+
     <!-- Featured story -->
     <section class="section section--paper" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
       <div class="wrap measure">
@@ -103,5 +113,31 @@
 
   <div id="site-footer"></div>
   <script src="assets/js/main.js"></script>
+  <!-- Backend (optional): shows approved stories once supabase-config.js is filled in -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/db.js"></script>
+  <script>
+    (function () {
+      if (!window.GuerraDB || !GuerraDB.ready) return; // offline mode: keep samples only
+      var LABEL = { confirmed: "Confirmed", likely: "Likely", unverified: "Unverified", tradition: "Family tradition" };
+      function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+      GuerraDB.stories(30).then(function (r) {
+        if (r.error || !r.data || !r.data.length) return;
+        var wrap = document.getElementById("live-stories");
+        wrap.innerHTML = r.data.map(function (s) {
+          var st = s.evidence_status || "unverified";
+          return '<article class="card">' +
+            '<div class="story__meta">' + esc(s.about || "Family story") +
+              ' · <span class="tag tag--' + esc(st) + '">' + esc(LABEL[st] || st) + '</span></div>' +
+            '<h3>' + esc(s.title || "Untitled") + '</h3>' +
+            '<p>' + esc(s.body || "").replace(/\n+/g, " ").slice(0, 260) + ((s.body || "").length > 260 ? "…" : "") + '</p>' +
+            '<p class="muted" style="font-size:.85rem;margin:0">Shared by ' + esc(s.contributor || "a family member") + '</p>' +
+          '</article>';
+        }).join("");
+        document.getElementById("live-stories-section").hidden = false;
+      });
+    })();
+  </script>
 </body>
 </html>

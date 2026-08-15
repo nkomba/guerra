@@ -43,15 +43,42 @@ C:\Guerra\
 │   ├── js/forms.js         Contribution forms → email + downloadable file (set curator email here)
 │   └── img/                Put your own photographs and images here
 │
+├── admin.html              Private curator dashboard (moderate submissions) — backend only
+│
+├── assets/js/
+│   ├── supabase-config.js  ← paste your Supabase URL + anon key here to go live
+│   ├── db.js               Data layer (submit contributions, fetch approved stories)
+│   └── admin.js            Dashboard logic
+│
+├── supabase/
+│   └── schema.sql          Run this once in Supabase to create the database + security
+│
 ├── data/
 │   └── family.js           ★ YOUR FAMILY DATA — edit this to add real relatives & branches
 │
 ├── docs/
-│   ├── PROJECT-PLAN.md         Full strategy, architecture, features, workflow, roadmap
-│   └── CONTENT-EDITING-GUIDE.md  Plain-language guide for non-technical family editors
+│   ├── PROJECT-PLAN.md          Full strategy, architecture, features, workflow, roadmap
+│   ├── CONTENT-EDITING-GUIDE.md Plain-language guide for non-technical family editors
+│   └── SUPABASE-SETUP.md        Step-by-step: connect the free dynamic backend
 │
 └── README.md               This file
 ```
+
+---
+
+## Two ways to run this site
+
+**1. Offline / static (default).** Do nothing extra. Contributions arrive by email or downloadable
+file; the curator edits `data/family.js` by hand. Works straight from `C:\Guerra`.
+
+**2. Dynamic backend (optional, free).** Connect a free **Supabase** database so contributions are
+submitted online, moderated in a private dashboard (`admin.html`), and approved stories publish
+themselves to the Stories page. The family tree still reads from `data/family.js`.
+
+To turn on the backend, follow **`docs/SUPABASE-SETUP.md`** — about 20–30 minutes, once. In short:
+create a free Supabase project, run `supabase/schema.sql`, paste two keys into
+`assets/js/supabase-config.js`, and create the curator's login. Until you do this, the site simply
+stays in offline mode with no errors.
 
 ---
 

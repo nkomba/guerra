@@ -45,7 +45,7 @@
           <div>
             <!-- STORY -->
             <div class="form-panel is-active" id="panel-story">
-              <form class="form-card contrib-form" data-type="Story or Memory">
+              <form class="form-card contrib-form" data-type="Story or Memory" data-dbtype="story">
                 <h2 class="mt-0">Share a story or memory</h2>
                 <p class="muted">Oral histories, sayings, traditions, milestones — in your own words.</p>
                 <div class="field"><label for="s-title">Story title <span class="req">*</span></label>
@@ -73,7 +73,7 @@
 
             <!-- PHOTO -->
             <div class="form-panel" id="panel-photo">
-              <form class="form-card contrib-form" data-type="Photo or Document">
+              <form class="form-card contrib-form" data-type="Photo or Document" data-dbtype="photo">
                 <h2 class="mt-0">Add a photo or document</h2>
                 <p class="muted">Describe the item here, then attach the actual file to your email.</p>
                 <div class="note" style="margin-bottom:1.1rem">Files can't upload directly on this simple site.
@@ -107,7 +107,7 @@
 
             <!-- CORRECTION -->
             <div class="form-panel" id="panel-correction">
-              <form class="form-card contrib-form" data-type="Correction">
+              <form class="form-card contrib-form" data-type="Correction" data-dbtype="correction">
                 <h2 class="mt-0">Suggest a correction</h2>
                 <p class="muted">Spotted a wrong date, a misspelled name, or a mixed-up relationship? Thank you.</p>
                 <div class="field"><label for="c-where">What should we look at? <span class="req">*</span></label>
@@ -134,7 +134,7 @@
 
             <!-- NEW PERSON / BRANCH -->
             <div class="form-panel" id="panel-person">
-              <form class="form-card contrib-form" data-type="New Relative or Branch">
+              <form class="form-card contrib-form" data-type="New Relative or Branch" data-dbtype="new_person">
                 <h2 class="mt-0">Add a relative or a new branch</h2>
                 <p class="muted">Tell us about someone missing from the tree. Fill in whatever you know —
                    blanks are fine.</p>
@@ -178,7 +178,7 @@
 
             <!-- RESEARCH LEAD -->
             <div class="form-panel" id="panel-lead">
-              <form class="form-card contrib-form" data-type="Research Lead">
+              <form class="form-card contrib-form" data-type="Research Lead" data-dbtype="lead">
                 <h2 class="mt-0">Submit a research lead</h2>
                 <p class="muted">A hunch, a record you found, a place to look, or a possible connection to
                    investigate. Leads are marked "unverified" until confirmed.</p>
@@ -243,6 +243,10 @@
 
   <div id="site-footer"></div>
   <script src="assets/js/main.js"></script>
+  <!-- Backend (optional): once supabase-config.js is filled in, forms submit online -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/db.js"></script>
   <script src="assets/js/forms.js"></script>
 </body>
 </html>

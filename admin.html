@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Curator Dashboard — Guerra Family</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 6 10v12c0 11 8 18 18 23 10-5 18-12 18-23V10z' fill='%232f5d50'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="admin">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 3 6 10v12c0 11 8 18 18 23 10-5 18-12 18-23V10L24 3z" fill="#2f5d50" stroke="#22453b" stroke-width="1.5"/><path d="M24 12c-4 4-7 4-7 9 0 4 3 7 7 11 4-4 7-7 7-11 0-5-3-5-7-9z" fill="#c1922f"/></svg>
+        <span class="brand__text"><span class="brand__name">Curator Dashboard</span><span class="brand__sub">Guerra Family · private</span></span>
+      </a>
+      <button class="btn btn--ghost btn--sm" id="signout" style="display:none">Sign out</button>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="wrap">
+
+      <!-- Shown only if Supabase isn't configured yet -->
+      <div id="not-configured" class="note" hidden>
+        <strong>The backend isn't connected yet.</strong> Fill in
+        <code>assets/js/supabase-config.js</code> with your Supabase URL and anon key, then reload this
+        page. See <code>docs/SUPABASE-SETUP.md</code> for the step-by-step guide.
+      </div>
+
+      <!-- Login -->
+      <div id="login-view" hidden>
+        <div class="form-card" style="max-width:26rem;margin:2rem auto">
+          <h1 class="mt-0" style="font-size:1.6rem">Curator sign in</h1>
+          <p class="muted">Only the family curator can review submissions.</p>
+          <form id="login-form">
+            <div class="field"><label for="login-email">Email</label>
+              <input id="login-email" type="email" autocomplete="username" required></div>
+            <div class="field"><label for="login-password">Password</label>
+              <input id="login-password" type="password" autocomplete="current-password" required></div>
+            <p id="login-error" class="tag tag--living" style="display:inline-block" hidden></p>
+            <div class="btn-row"><button class="btn btn--primary" id="login-btn" type="submit">Sign in</button></div>
+          </form>
+          <p class="muted" style="font-size:.82rem;margin-top:1rem">Forgot your password? Reset it from your
+             Supabase dashboard under Authentication → Users.</p>
+        </div>
+      </div>
+
+      <!-- Dashboard -->
+      <div id="dash-view" hidden>
+        <div style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:1rem">
+          <div>
+            <h1 class="mt-0 mb-0">Submissions</h1>
+            <p class="muted mb-0">Review, tidy, and publish what the family sends in.</p>
+          </div>
+          <span class="tree-count" id="count"></span>
+        </div>
+
+        <div class="form-tabs" role="tablist" aria-label="Filter submissions" style="margin-top:1.2rem">
+          <button class="form-tab filter-btn" data-filter="pending"  aria-selected="true">Pending</button>
+          <button class="form-tab filter-btn" data-filter="approved" aria-selected="false">Approved</button>
+          <button class="form-tab filter-btn" data-filter="rejected" aria-selected="false">Rejected</button>
+          <button class="form-tab filter-btn" data-filter="all"      aria-selected="false">All</button>
+        </div>
+
+        <div class="note" style="margin-bottom:1.2rem">
+          Approving a <strong>story</strong> publishes it to the public
+          <a href="stories.html">Stories</a> page (with the evidence label you choose). Other types are kept
+          for your records and to update the family tree in <code>data/family.js</code>. Contributor emails
+          are visible only here, never publicly.
+        </div>
+
+        <div id="subs"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
