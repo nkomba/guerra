@@ -507,7 +507,7 @@ window.GUERRA_DATA = {
       migration: "us", living: false, status: "confirmed",
       birth: { date: "17 Jun 1931", place: "Rochester, Monroe, New York, USA" },
       death: { date: "20 Dec 1999", place: "Rockville, Montgomery, Maryland, USA" },
-      parents: ["i34", "i35"], spouses: ["i51", "i85"], children: ["i60", "i57", "i58", "i59", "i71"],
+      parents: ["i34", "i35"], spouses: ["i51", "i85"], children: ["i60", "i57", "i58", "i59", "i71", "i89", "i90", "i91"],
       notes: "Imported from the family's Ancestry.com tree.",
       photo: "assets/img/marilyn-guerra.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
@@ -517,7 +517,7 @@ window.GUERRA_DATA = {
       migration: "us", living: false, status: "confirmed",
       birth: { date: "04/18/1933", place: "Ludlow, Hampden, Massachusetts, USA" },
       death: { date: "09/17/2019", place: "Germantown, Montgomery, Maryland, USA" },
-      parents: ["i29", "i32"], spouses: ["i50"], children: ["i60", "i57", "i58", "i59"],
+      parents: ["i29", "i32"], spouses: ["i50"], children: ["i60", "i57", "i58", "i59", "i89", "i90", "i91"],
       notes: "Imported from the family's Ancestry.com tree.",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
@@ -853,6 +853,33 @@ window.GUERRA_DATA = {
       death: { date: "", place: "" },
       parents: ["i58", "i76"], spouses: [], children: [],
       notes: "Living relative — details withheld to protect privacy.",
+      sources: []
+    },
+    {
+      id: "i89", name: "Living relative", sex: "?", gen: 3, branch: "guerra",
+      migration: "us", living: true, status: "likely",
+      birth: { date: "living", place: "withheld" },
+      death: { date: "", place: "" },
+      parents: ["i51", "i50"], spouses: [], children: [],
+      notes: "Living relative — details withheld to protect privacy. (Peter Guerra (living, protected))",
+      sources: []
+    },
+    {
+      id: "i90", name: "Living relative", sex: "?", gen: 3, branch: "guerra",
+      migration: "us", living: true, status: "likely",
+      birth: { date: "living", place: "withheld" },
+      death: { date: "", place: "" },
+      parents: ["i51", "i50"], spouses: [], children: [],
+      notes: "Living relative — details withheld to protect privacy. (daughter (living, protected))",
+      sources: []
+    },
+    {
+      id: "i91", name: "Living relative", sex: "?", gen: 3, branch: "guerra",
+      migration: "us", living: true, status: "likely",
+      birth: { date: "living", place: "withheld" },
+      death: { date: "", place: "" },
+      parents: ["i51", "i50"], spouses: [], children: [],
+      notes: "Living relative — details withheld to protect privacy. (daughter (living, protected))",
       sources: []
     },
   ]
