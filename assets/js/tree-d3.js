@@ -58,14 +58,23 @@
     if (!roots.length) { var fb = byId["p1"] || DATA.people[0]; if (fb) roots = [fb]; }
     var rootPerson = roots[0];
     var SYN = { __syn: true, id: "__syn", children: roots.map(function (r) { return r.id; }) };
+    // A person can have two parents both present in the data. To avoid drawing
+    // them (and their whole sub-tree) twice, each person is "claimed" by the
+    // first parent that reaches them; the other parent still lists them as a
+    // child in the detail panel, but only one node is drawn in the tree.
+    var claimed = {};
     var root = d3.hierarchy(SYN, function (d) {
-      var kids = d.__syn ? d.children : d.children;
-      return (kids || []).map(function (id) { return byId[id]; }).filter(Boolean);
+      if (d.__syn) return (d.children || []).map(function (id) { return byId[id]; }).filter(Boolean);
+      return (d.children || []).map(function (id) { return byId[id]; }).filter(function (c) {
+        if (!c || claimed[c.id]) return false;
+        claimed[c.id] = true; return true;
+      });
     });
-    // Collapse each line beyond its first two generations initially (the hidden
-    // synthetic root sits at depth 0, so real roots are depth 1).
+    // The real tree has many family lines, so open with each line's root
+    // collapsed (tap to expand). The hidden synthetic root is depth 0, so real
+    // line-roots are depth 1; collapse everything below them initially.
     root.descendants().forEach(function (d) {
-      if (d.depth >= 3 && d.children) { d._children = d.children; d.children = null; }
+      if (d.depth >= 1 && d.children) { d._children = d.children; d.children = null; }
     });
 
     var LEVEL_W = 210, NODE_H = 74;
