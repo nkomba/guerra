@@ -48,6 +48,7 @@ window.GUERRA_DATA = {
       death: { date: "1799", place: "Lancaster County, Pennsylvania, USA" },
       parents: [], spouses: [], children: ["i3"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/valentine-j-sala.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -66,6 +67,7 @@ window.GUERRA_DATA = {
       death: { date: "26 Sep 1858", place: "West Point, Lee, Iowa, USA" },
       parents: ["i1"], spouses: [], children: ["i4", "i84", "i74", "i73", "i62"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/jacob-otto-sala.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -75,6 +77,7 @@ window.GUERRA_DATA = {
       death: { date: "16 Aug 1885", place: "Toledo, Lucas, Ohio, USA" },
       parents: ["i3"], spouses: ["i5"], children: ["i8"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/benjamin-sala.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -102,6 +105,7 @@ window.GUERRA_DATA = {
       death: { date: "5 January 1892", place: "Kanawha, West Virginia" },
       parents: [], spouses: ["i6"], children: ["i13", "i15", "i14", "i12", "i16", "i17"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/samuel-c-blair.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -111,6 +115,7 @@ window.GUERRA_DATA = {
       death: { date: "19 August 1912", place: "Canton, Stark County, Ohio, United States of America" },
       parents: ["i4", "i5"], spouses: ["i10"], children: ["i20", "i18", "i27"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/james-milton-sala.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -120,6 +125,7 @@ window.GUERRA_DATA = {
       death: { date: "29 Dec 1928", place: "Kanawha, West Virginia, USA" },
       parents: [], spouses: ["i11"], children: ["i21"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/george-m-huddleston.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -129,6 +135,7 @@ window.GUERRA_DATA = {
       death: { date: "23 February 1936", place: "Decatur, Macon County, Illinois, United States of America" },
       parents: [], spouses: ["i8"], children: ["i20", "i18", "i27"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/hannah-perdue.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -201,6 +208,7 @@ window.GUERRA_DATA = {
       death: { date: "1949", place: "" },
       parents: ["i8", "i10"], spouses: ["i31"], children: [],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/charles-b-sala.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -219,6 +227,7 @@ window.GUERRA_DATA = {
       death: { date: "3 Jun 1967", place: "Indianapolis, Marion, Indiana, USA" },
       parents: ["i8", "i10"], spouses: ["i30"], children: ["i34", "i38"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/john-p-sala.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -228,6 +237,7 @@ window.GUERRA_DATA = {
       death: { date: "14 April 1945", place: "Charleston, Kanawha County, West Virginia, United States of America" },
       parents: ["i9", "i11"], spouses: ["i23"], children: ["i35"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/edward-e-huddleston.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -237,6 +247,7 @@ window.GUERRA_DATA = {
       death: { date: "1964", place: "Ludlow, Massachusetts, USA" },
       parents: [], spouses: ["i24"], children: ["i32", "i36", "i37", "i40", "i42", "i47"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/antonio-a-robelo.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -282,6 +293,7 @@ window.GUERRA_DATA = {
       death: { date: "28 Mar 1945", place: "Jefferson, Kentucky, USA" },
       parents: ["i8", "i10"], spouses: ["i28", "i26"], children: ["i75"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/reverend-h-sala.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -300,6 +312,7 @@ window.GUERRA_DATA = {
       death: { date: "7 Dec 1950", place: "Ludlow City, Hampden, Massachusetts, USA" },
       parents: [], spouses: ["i32", "i87"], children: ["i51", "i41", "i45", "i44", "i48", "i52", "i43"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/antonio-j-guerra.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -327,6 +340,7 @@ window.GUERRA_DATA = {
       death: { date: "1997", place: "Ludlow, Hampden, Massachusetts" },
       parents: ["i22", "i24"], spouses: ["i29"], children: ["i51", "i41", "i45", "i44", "i48", "i52", "i43"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/angela-r-guerra.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -345,6 +359,7 @@ window.GUERRA_DATA = {
       death: { date: "30 May 1969", place: "Ohio County, West Virginia, USA" },
       parents: ["i20", "i30"], spouses: ["i35"], children: ["i50"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/john-robert-sala.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -354,6 +369,7 @@ window.GUERRA_DATA = {
       death: { date: "4 September 1967", place: "Bethany, Brooke County, West Virginia, United States of America" },
       parents: ["i21", "i23"], spouses: ["i34"], children: ["i50"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/helen-h-sala.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -381,6 +397,7 @@ window.GUERRA_DATA = {
       death: { date: "6 Dec 1985", place: "Polk, Florida, United States" },
       parents: ["i20", "i30"], spouses: ["i70"], children: ["i81", "i67"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/james-m-sala.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -435,6 +452,7 @@ window.GUERRA_DATA = {
       death: { date: "19 Dec 2006", place: "Ludlow Town, Ludlow, Hampden, Massachusetts, USA" },
       parents: ["i29", "i32"], spouses: ["i46"], children: ["i65", "i68", "i64", "i72", "i54"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/john-guerra.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -453,6 +471,7 @@ window.GUERRA_DATA = {
       death: { date: "30 Apr 2020", place: "Westboro, Massachusetts" },
       parents: [], spouses: ["i44"], children: ["i65", "i68", "i64", "i72", "i54"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/francesca-guerra.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -480,6 +499,7 @@ window.GUERRA_DATA = {
       death: { date: "4 Feb 2019", place: "Midland, Cabarrus, North Carolina, USA" },
       parents: [], spouses: ["i48"], children: ["i53", "i56", "i78", "i63", "i79", "i82", "i80"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/constance-bell-guerra.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -489,6 +509,7 @@ window.GUERRA_DATA = {
       death: { date: "20 Dec 1999", place: "Rockville, Montgomery, Maryland, USA" },
       parents: ["i34", "i35"], spouses: ["i51", "i85"], children: ["i60", "i57", "i58", "i59", "i71"],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/marilyn-guerra.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {
@@ -516,6 +537,7 @@ window.GUERRA_DATA = {
       death: { date: "06/17/2024", place: "Frederick, Frederick, Maryland, USA" },
       parents: ["i48", "i49"], spouses: [], children: [],
       notes: "Imported from the family's Ancestry.com tree.",
+      photo: "assets/img/anthony-l-guerra.jpg",
       sources: ["Ancestry.com Member Tree: Guerra Robelo Sala Nkomba Family Tree (2026)"]
     },
     {

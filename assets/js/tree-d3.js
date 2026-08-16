@@ -80,6 +80,9 @@
     var LEVEL_W = 210, NODE_H = 74;
     host.innerHTML = "";
     var svg = d3.select(host).append("svg").attr("width", "100%").attr("height", 560);
+    // circular clip for node photo avatars
+    svg.append("defs").append("clipPath").attr("id", "pfClip").attr("clipPathUnits", "userSpaceOnUse")
+      .append("circle").attr("r", 10).attr("cx", 0).attr("cy", 0);
     var g = svg.append("g");
     var layout = d3.tree().nodeSize([NODE_H, LEVEL_W]);
     var zoom = d3.zoom().scaleExtent([0.3, 2]).on("zoom", function (e) { g.attr("transform", e.transform); });
@@ -104,6 +107,7 @@
         return;
       }
       panel.innerHTML =
+        (p.photo ? '<img src="' + esc(p.photo) + '" alt="' + esc(p.name) + '" onerror="this.style.display=\'none\'" style="width:92px;height:92px;object-fit:cover;border-radius:50%;border:2px solid var(--line);float:right;margin:0 0 .4rem .7rem">' : '') +
         '<h3 style="margin:0 0 .3rem">' + esc(p.name) + '</h3>' +
         '<p style="margin:0 0 .6rem">' +
           '<span class="tag" style="background:' + m.color + '22;color:' + m.color + '">' + m.flag + ' ' + esc(m.label) + '</span> ' +
@@ -156,6 +160,15 @@
       // main circle: fill = migration, ring stroke = evidence
       node.append("circle").attr("r", 7).attr("stroke-width", 3)
         .attr("fill", function (d) { return d.data.living ? "#b7ad99" : MIG[mig(d.data)].color; })
+        .attr("stroke", function (d) { return (EV[d.data.status] || EV.unverified).color; });
+      // photo avatar (deceased people who have a portrait) — clipped to a circle
+      var withPhoto = node.filter(function (d) { return d.data.photo && !d.data.living; });
+      withPhoto.append("image")
+        .attr("href", function (d) { return d.data.photo; })
+        .attr("xlink:href", function (d) { return d.data.photo; })
+        .attr("x", -10).attr("y", -10).attr("width", 20).attr("height", 20)
+        .attr("preserveAspectRatio", "xMidYMid slice").attr("clip-path", "url(#pfClip)");
+      withPhoto.append("circle").attr("r", 10).attr("fill", "none").attr("stroke-width", 2.5)
         .attr("stroke", function (d) { return (EV[d.data.status] || EV.unverified).color; });
       node.append("text").attr("dy", "-0.95em").attr("text-anchor", "middle").style("font-size", "12px")
         .text(function (d) { return MIG[mig(d.data)].flag; });
