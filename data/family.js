@@ -50,11 +50,11 @@ window.GUERRA_DATA = {
     },
     {
       id: "ramo-eua",
-      name: "From Freixo da Serra to America (United States)",
-      lead: "The family's principal emigration story — Guerra relatives who crossed the Atlantic to the United States.",
-      description: "The largest and most significant migration branch of the family. Like many from mainland Beira Alta, our people left the Serra da Estrela for the United States — most often the textile cities of New England (Fall River, New Bedford, Lowell, Providence) and later New Jersey. This is the branch that carries the family into its American generations.",
-      keyAncestors: "[U.S. emigrant ancestor — name to add] (arrived c. 19—)",
-      migration: "Freixo da Serra → port of departure → Ellis Island / New York → New England textile cities (and later New Jersey). Passenger manifests after 1906 often name the exact village of origin."
+      name: "The Ludlow, Massachusetts Branch (United States)",
+      lead: "The family's principal — and best-documented — emigration story: the line that settled in Ludlow, Massachusetts.",
+      description: "Founded by Antonio Jacquim Guerra and Angela Rebelo (also recorded 'Rubello') Guerra, who settled in Ludlow, Hampden County, Massachusetts — a major destination for Portuguese immigrants, many from the Serra da Estrela, who came to work at the Ludlow Manufacturing Associates jute mills. Their American descendants spread from Massachusetts to Maryland and Virginia. This is now the most extensively documented emigration line from the family, supported by published obituaries.",
+      keyAncestors: "Antonio Jacquim Guerra & Angela Rebelo (Rubello) Guerra → Ludlow, Massachusetts",
+      migration: "Portugal (Freixo da Serra? — origin parish not yet confirmed) → Ludlow, Massachusetts → later branches in Maryland and Virginia. Passenger/emigration records still being sought."
     },
     {
       id: "ramo-antonia",
@@ -79,7 +79,7 @@ window.GUERRA_DATA = {
     /* GENERATION 1 ---------------------------------------------------- */
     {
       id: "p1", name: "João Guerra", sex: "M", gen: 1, branch: "casa-do-alto",
-      living: false, status: "likely",
+      living: false, status: "likely", treeRoot: true,
       birth: { date: "abt 1820", place: "Freixo da Serra, Gouveia, Portugal" },
       death: { date: "1889", place: "Freixo da Serra, Gouveia, Portugal" },
       parents: [], spouses: ["p2"], children: ["p3", "p4"],
@@ -102,7 +102,7 @@ window.GUERRA_DATA = {
       living: false, status: "confirmed",
       birth: { date: "12 Mar 1848", place: "Freixo da Serra, Gouveia, Portugal" },
       death: { date: "1922", place: "Freixo da Serra, Gouveia, Portugal" },
-      parents: ["p1", "p2"], spouses: ["p5"], children: ["p6", "p7", "p8", "p16"],
+      parents: ["p1", "p2"], spouses: ["p5"], children: ["p6", "p7", "p8"],
       notes: "SAMPLE ENTRY. Head of the Casa do Alto in the late 19th century. Baptism record reviewed and confirms parents and date.",
       sources: ["Baptism register, Freixo da Serra parish, 1848", "Civil death record, Gouveia, 1922"]
     },
@@ -120,7 +120,7 @@ window.GUERRA_DATA = {
       living: false, status: "confirmed",
       birth: { date: "1852", place: "Figueiró da Serra, Gouveia, Portugal" },
       death: { date: "1930", place: "Freixo da Serra, Gouveia, Portugal" },
-      parents: [], spouses: ["p3"], children: ["p6", "p7", "p8", "p16"],
+      parents: [], spouses: ["p3"], children: ["p6", "p7", "p8"],
       notes: "SAMPLE ENTRY. Married Manuel Guerra in 1874. Born in the neighbouring parish of Figueiró da Serra.",
       sources: ["Parish marriage register, 1874"]
     },
@@ -163,24 +163,100 @@ window.GUERRA_DATA = {
       sources: ["Baptism register, Freixo da Serra parish, 1882"]
     },
 
-    /* ---- U.S. EMIGRANT BRANCH (placeholders — fill in from records) ---- */
+    /* ---- THE LUDLOW, MASSACHUSETTS BRANCH (documented U.S. line) --------
+       A REAL, separately-rooted line. It is intentionally NOT linked to the
+       sample Freixo da Serra tree above, because whether founder Antonio's
+       birthplace was Freixo da Serra is still an OPEN research question.
+       `treeRoot: true` makes Antonio a starting point of the family tree. */
     {
-      id: "p16", name: "[U.S. emigrant ancestor — name to add]", sex: "?", gen: 3, branch: "ramo-eua",
-      migration: "us", living: false, status: "unverified",
-      birth: { date: "[birth year — to add]", place: "Freixo da Serra, Gouveia, Portugal" },
-      death: { date: "[to add]", place: "[U.S. city / state — to add]" },
-      parents: ["p3", "p5"], spouses: [], children: ["p17"],
-      notes: "PLACEHOLDER — the family's U.S. emigrant. Fill in from records: full name; year of departure and arrival; port of departure; ship name; Ellis Island / New York manifest reference; first U.S. city and state (often a New England textile city such as Fall River, New Bedford, Lowell, or Providence, or later New Jersey); naturalization details.",
-      sources: ["To add: Ellis Island / New York passenger manifest (post-1906 lists the village of origin)", "To add: U.S. Census 1920 / 1930", "To add: Petition for Naturalization"]
+      id: "lu1", name: "Antonio Jacquim Guerra", sex: "M", gen: 1, branch: "ramo-eua",
+      migration: "us", living: false, status: "likely", treeRoot: true,
+      birth: { date: "unknown", place: "Portugal (Freixo da Serra? — origin parish not yet confirmed)" },
+      death: { date: "unknown", place: "Ludlow, Hampden County, Massachusetts, USA" },
+      parents: [], spouses: ["lu2"], children: ["lu3", "lu4", "lu5", "lu6", "lu7"],
+      notes: "Founding immigrant of the Ludlow, Massachusetts branch, with his wife Angela. Settled in Ludlow, Hampden County, MA — a major destination for Portuguese immigrants (many from the Serra da Estrela) who worked at the Ludlow Manufacturing Associates jute mills. OPEN QUESTION: whether his birthplace was specifically Freixo da Serra or a neighbouring Gouveia/Guarda parish is not yet confirmed; ship passenger manifests / Ellis Island records are still being sought.",
+      sources: ["Named as father in the obituaries of his children (see Sources & Method)"]
     },
     {
-      id: "p17", name: "[U.S.-born descendant — name to add]", sex: "?", gen: 4, branch: "ramo-eua",
-      migration: "us", living: false, status: "unverified",
-      birth: { date: "[to add]", place: "[U.S. state — to add]" },
+      id: "lu2", name: "Angela Rebelo Guerra", sex: "F", gen: 1, branch: "ramo-eua",
+      migration: "us", living: false, status: "likely",
+      birth: { date: "unknown", place: "Portugal (origin parish not yet confirmed)" },
+      death: { date: "unknown", place: "Ludlow, Massachusetts, USA" },
+      parents: [], spouses: ["lu1"], children: ["lu3", "lu4", "lu5", "lu6", "lu7"],
+      notes: "Matriarch of the Ludlow branch; surname also recorded as 'Rubello'. Her given name, Angela, carries down to a later generation (Angela Guerra Roelse). OPEN QUESTION: which 'Angela Guerra' family stories refer to — this immigrant matriarch or the later-generation Angela Guerra Roelse.",
+      sources: ["Named as mother in the obituaries of her children (see Sources & Method)"]
+    },
+    {
+      id: "lu3", name: "Grace Guerra (Fitzsimmons)", sex: "F", gen: 2, branch: "ramo-eua",
+      migration: "us", living: false, status: "confirmed",
+      birth: { date: "8 May 1920", place: "Ludlow, Massachusetts, USA" },
+      death: { date: "26 Apr 2020", place: "Woodstock, Virginia, USA" },
+      parents: ["lu1", "lu2"], spouses: [], children: [],
+      notes: "Eldest of the five Ludlow-born children; married surname Fitzsimmons. Lived to nearly 100.",
+      sources: ["Obituary of Grace Fitzsimmons (Legacy.com / Northern Virginia Daily / Valley Funeral Service, 2020)"]
+    },
+    {
+      id: "lu4", name: "Lourdes Guerra (Lourenço)", sex: "F", gen: 2, branch: "ramo-eua",
+      migration: "us", living: false, status: "confirmed",
+      birth: { date: "2 Aug 1921", place: "Ludlow, Massachusetts, USA" },
+      death: { date: "25 Nov 2018", place: "Ludlow, Massachusetts, USA" },
+      parents: ["lu1", "lu2"], spouses: [], children: [],
+      notes: "Married surname Lourenço; remained in Ludlow. Her obituary lists all five siblings by name.",
+      sources: ["Obituary of Lourdes (Guerra) Lourenco (The Republican / MassLive, 2018)"]
+    },
+    {
+      id: "lu5", name: "John M. Guerra", sex: "M", gen: 2, branch: "ramo-eua",
+      migration: "us", living: false, status: "confirmed",
+      birth: { date: "1922", place: "Ludlow, Massachusetts, USA" },
+      death: { date: "19 Dec 2006", place: "Ludlow, Massachusetts, USA" },
+      parents: ["lu1", "lu2"], spouses: [], children: [],
+      notes: "Remained in Ludlow, Massachusetts.",
+      sources: ["Obituary of John M. Guerra (Ludlow Funeral Home / Legacy.com, 2006)"]
+    },
+    {
+      id: "lu6", name: "Serafim \"Serf\" Lawrence Guerra", sex: "M", gen: 2, branch: "ramo-eua",
+      migration: "us", living: false, status: "confirmed",
+      birth: { date: "1926", place: "Ludlow, Massachusetts, USA" },
+      death: { date: "2019", place: "Virginia, USA" },
+      parents: ["lu1", "lu2"], spouses: ["lu8"], children: ["lu9"],
+      notes: "U.S. Navy veteran (WWII); chemistry degree; interpreter for the Brazilian Embassy in Washington, DC; founded Guerra Technical Sales. Married Constance Amber Bell (a 74-year marriage) and raised eight children: Tony, Marvin, Chuck, Larry, Connie, Melissa, Michelle, and Pamela. Active in Maryland civic life, then Virginia (Virginia Tech planning bodies, Fauquier County zoning, Library of Virginia board). Buried at Gate of Heaven Cemetery, Silver Spring, Maryland. (Only his eldest son, Tony, is shown as a node here; the other seven children are named in his story.)",
+      sources: ["Obituary of Serafim Lawrence Guerra (ForeverMissed.com online memorial, 1926–2019)"]
+    },
+    {
+      id: "lu7", name: "James Guerra", sex: "M", gen: 2, branch: "ramo-eua",
+      migration: "us", living: false, status: "likely",
+      birth: { date: "unknown", place: "Ludlow, Massachusetts, USA" },
+      death: { date: "unknown", place: "Ludlow, Massachusetts, USA" },
+      parents: ["lu1", "lu2"], spouses: [], children: [],
+      notes: "One of the five Ludlow-born siblings; remained in Ludlow, Massachusetts.",
+      sources: ["Named among the siblings in the obituary of Lourdes (Guerra) Lourenco, 2018"]
+    },
+    {
+      id: "lu8", name: "Constance Amber Bell Guerra", sex: "F", gen: 2, branch: "ramo-eua",
+      migration: "us", living: false, status: "likely",
+      birth: { date: "unknown", place: "USA" },
+      death: { date: "unknown", place: "USA" },
+      parents: [], spouses: ["lu6"], children: ["lu9"],
+      notes: "Wife of Serafim Guerra; their marriage lasted 74 years.",
+      sources: ["Named in the obituary of Serafim Lawrence Guerra, 2019"]
+    },
+    {
+      id: "lu9", name: "Anthony \"Tony\" Lawrence Guerra Sr.", sex: "M", gen: 3, branch: "ramo-eua",
+      migration: "us", living: false, status: "confirmed",
+      birth: { date: "1945", place: "USA" },
+      death: { date: "2024", place: "Frederick, Maryland, USA" },
+      parents: ["lu6", "lu8"], spouses: [], children: ["lu10"],
+      notes: "Eldest son of Serafim; later settled in Frederick, Maryland. Father of Angela Guerra Roelse, whose name carries the immigrant matriarch's name into a new generation.",
+      sources: ["Obituary of Anthony Lawrence Guerra Sr. (Beltway Cremation Center, 2024)"]
+    },
+    {
+      id: "lu10", name: "Angela Guerra Roelse", sex: "F", gen: 4, branch: "ramo-eua",
+      migration: "us", living: true, status: "likely",
+      birth: { date: "living", place: "withheld" },
       death: { date: "", place: "" },
-      parents: ["p16"], spouses: [], children: [],
-      notes: "PLACEHOLDER — first American-born generation of the family. Replace with a real relative (mark living:true, with consent, if they may be alive).",
-      sources: []
+      parents: ["lu9"], spouses: [], children: [],
+      notes: "Daughter of Anthony 'Tony' Guerra Sr.; carries the given name of the immigrant matriarch, Angela. Shown without personal details as she may be living.",
+      sources: ["Mentioned in the obituary of Anthony Lawrence Guerra Sr., 2024"]
     },
     {
       id: "p11", name: "Amélia Figueiredo", sex: "F", gen: 3, branch: "casa-do-alto",

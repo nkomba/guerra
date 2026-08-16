@@ -49,13 +49,23 @@
     function mig(p) { return MIG[p.migration] ? p.migration : "portugal"; }
     function nameOf(p) { return p.living ? "Living relative" : p.name; }
 
-    var rootPerson = byId["p1"] || DATA.people[0];
-    var root = d3.hierarchy(rootPerson, function (d) {
-      return (d.children || []).map(function (id) { return byId[id]; }).filter(Boolean);
+    // FOREST: the tree can show several unconnected family lines. Any person
+    // flagged `treeRoot: true` starts a line (e.g. the sample Freixo line AND
+    // the documented Ludlow, MA line). We build them under one hidden synthetic
+    // root so a single layout positions every line, then we don't render that
+    // synthetic node — the lines appear side-by-side but unconnected.
+    var roots = DATA.people.filter(function (p) { return p.treeRoot; });
+    if (!roots.length) { var fb = byId["p1"] || DATA.people[0]; if (fb) roots = [fb]; }
+    var rootPerson = roots[0];
+    var SYN = { __syn: true, id: "__syn", children: roots.map(function (r) { return r.id; }) };
+    var root = d3.hierarchy(SYN, function (d) {
+      var kids = d.__syn ? d.children : d.children;
+      return (kids || []).map(function (id) { return byId[id]; }).filter(Boolean);
     });
-    // Collapse everything deeper than the first three generations initially.
+    // Collapse each line beyond its first two generations initially (the hidden
+    // synthetic root sits at depth 0, so real roots are depth 1).
     root.descendants().forEach(function (d) {
-      if (d.depth >= 2 && d.children) { d._children = d.children; d.children = null; }
+      if (d.depth >= 3 && d.children) { d._children = d.children; d.children = null; }
     });
 
     var LEVEL_W = 210, NODE_H = 74;
@@ -106,7 +116,10 @@
     var activeId = null;
     function render() {
       layout(root);
-      var nodes = root.descendants(), links = root.links();
+      // Drop the hidden synthetic root and the links that emanate from it, so
+      // each real family line renders as its own unconnected tree.
+      var nodes = root.descendants().filter(function (d) { return !d.data.__syn; });
+      var links = root.links().filter(function (l) { return !l.source.data.__syn; });
       g.selectAll("*").remove();
 
       g.selectAll("path.tree-link").data(links).enter().append("path")
