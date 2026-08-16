@@ -4,63 +4,68 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Family Tree — The Guerra Family of Freixo da Serra</title>
-  <meta name="description" content="Browse the Guerra family tree by generation, branch, place, or name. Every person shows an evidence status and its sources; living relatives are protected.">
+  <meta name="description" content="An interactive, expandable family tree of the Guerra family. Click a person to reveal spouse, children, dates, and migration branch (Portugal, USA, Brazil). Evidence status shown on every person.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 6 10v12c0 11 8 18 18 23 10-5 18-12 18-23V10z' fill='%232f5d50'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* ---- Family Tree Visualization (D3) scoped styles ---- */
+    .tree-layout{display:grid;grid-template-columns:1.7fr .9fr;gap:1.25rem;margin-top:1rem;align-items:start}
+    @media (max-width:820px){ .tree-layout{grid-template-columns:1fr} }
+    #tree-d3{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;touch-action:none}
+    #tree-d3 .tree-node.is-active .nm{fill:var(--terracotta-dk)}
+    #tree-d3 .nm{fill:var(--ink)}
+    #tree-detail{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:1.1rem 1.2rem;position:sticky;top:5rem}
+    .tree-controls{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+    .legend-row{display:flex;flex-wrap:wrap;gap:1.2rem;margin:.6rem 0}
+    .legend-row .lg{display:inline-flex;align-items:center;gap:.4rem;font-size:.9rem}
+    .lg .sw{width:14px;height:14px;border-radius:50%;display:inline-block}
+  </style>
 </head>
 <body data-page="tree">
   <a class="skip-link" href="#main">Skip to content</a>
   <div id="site-header"></div>
 
   <main id="main">
+    <!-- ===================== Family Tree Visualization ===================== -->
     <section class="section">
       <div class="wrap">
         <p class="eyebrow">Family tree</p>
-        <h1>Browse the family</h1>
-        <p class="lead">Search and filter the family by name, place, branch, or generation. Select any
-           person to see their dates, relatives, notes, and the sources behind each fact. The coloured
-           tag on each card shows how well that person is documented.</p>
+        <h1>Explore the family, generation by generation</h1>
+        <p class="lead">Tap any person to open their branch and see their spouse, children, dates, and where their
+           line went — Portugal, America, or Brazil. Drag to move around; pinch or scroll to zoom.</p>
 
-        <!-- Evidence legend -->
-        <div class="badge-legend" aria-label="Evidence status key">
+        <!-- Migration legend (flags/colours) -->
+        <div class="legend-row" aria-label="Migration colour key">
+          <span class="lg"><span class="sw" style="background:#2f5d50"></span>🇵🇹 Stayed in Portugal</span>
+          <span class="lg"><span class="sw" style="background:#2f6f8f"></span>🇺🇸 United States</span>
+          <span class="lg"><span class="sw" style="background:#b07d17"></span>🇧🇷 Brazil</span>
+          <span class="lg"><span class="sw" style="background:#b7ad99"></span>Living (protected)</span>
+        </div>
+        <!-- Evidence legend (the ring around each person = how well documented) -->
+        <div class="legend-row" aria-label="Evidence status key">
+          <span class="muted" style="font-size:.9rem">Ring colour = how well documented:</span>
           <span class="tag tag--confirmed">Confirmed</span>
           <span class="tag tag--likely">Likely</span>
           <span class="tag tag--unverified">Unverified</span>
           <span class="tag tag--tradition">Family tradition</span>
-          <span class="tag tag--living">Living – protected</span>
-        </div>
-        <p class="muted" style="font-size:.9rem;margin-top:-.3rem">
-          New here? See what each label means in <a href="sources.html">Sources &amp; Method</a>.
-          Living relatives' details are hidden automatically to protect privacy.</p>
-
-        <!-- Toolbar -->
-        <div class="tree-toolbar" role="search">
-          <label class="visually-hidden" for="tree-search">Search people by name or place</label>
-          <input type="search" id="tree-search" placeholder="Search name or place…" autocomplete="off">
-          <label class="visually-hidden" for="filter-branch">Filter by branch</label>
-          <select id="filter-branch"><option value="">All branches</option></select>
-          <label class="visually-hidden" for="filter-gen">Filter by generation</label>
-          <select id="filter-gen"><option value="">All generations</option></select>
-          <label class="visually-hidden" for="filter-status">Filter by evidence status</label>
-          <select id="filter-status">
-            <option value="">All evidence</option>
-            <option value="confirmed">Confirmed</option>
-            <option value="likely">Likely</option>
-            <option value="unverified">Unverified</option>
-            <option value="tradition">Family tradition</option>
-            <option value="living">Living</option>
-          </select>
-          <span class="tree-count" id="tree-count" aria-live="polite"></span>
         </div>
 
-        <!-- The tree renders here -->
-        <div id="tree" class="tree" aria-live="polite"></div>
+        <div class="tree-controls">
+          <button class="btn btn--ghost btn--sm" id="tree-expand" type="button">Expand all</button>
+          <button class="btn btn--ghost btn--sm" id="tree-collapse" type="button">Collapse all</button>
+          <button class="btn btn--ghost btn--sm" id="tree-reset" type="button">Reset view</button>
+        </div>
+
+        <div class="tree-layout">
+          <div id="tree-d3" role="application" aria-label="Interactive family tree"></div>
+          <aside id="tree-detail" aria-live="polite"></aside>
+        </div>
 
         <div class="note" style="margin-top:1.5rem">
-          <strong>The people shown are illustrative sample entries</strong> to demonstrate the tree.
-          They are replaced by editing <code>data/family.js</code> — see the
-          <a href="contribute.html">Contribute</a> page or the editing guide included with the site.
-          Missing a relative? <a href="contribute.html">Add them here.</a>
+          <strong>The people shown are illustrative sample entries</strong> plus placeholder U.S. and Brazil
+          emigrants. Replace them with real relatives by editing <code>data/family.js</code> (see the editing
+          guide). Living relatives are automatically shown without personal details.
+          Missing someone? <a href="contribute.html">Add them here.</a>
         </div>
       </div>
     </section>
@@ -76,15 +81,11 @@
     </section>
   </main>
 
-  <!-- Person detail dialog -->
-  <dialog id="person-modal" class="person-modal" aria-label="Person details">
-    <div class="modal__head"></div>
-    <div class="modal__body"></div>
-  </dialog>
-
   <div id="site-footer"></div>
   <script src="assets/js/main.js"></script>
+  <!-- D3 (family tree visualization) via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script src="data/family.js"></script>
-  <script src="assets/js/tree.js"></script>
+  <script src="assets/js/tree-d3.js"></script>
 </body>
 </html>

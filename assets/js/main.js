@@ -20,6 +20,7 @@
     { id: "tree",     label: "Family Tree",      href: "family-tree.html" },
     { id: "branches", label: "Branches",         href: "branches.html" },
     { id: "stories",  label: "Stories",          href: "stories.html" },
+    { id: "explore",  label: "Explore & Play",   href: "explore.html" },
     { id: "sources",  label: "Sources & Method", href: "sources.html" },
     { id: "privacy",  label: "Privacy",          href: "privacy.html" },
     { id: "contact",  label: "Contact",          href: "contact.html" }

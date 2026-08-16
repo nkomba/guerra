@@ -21,7 +21,7 @@
   /* Heritage palette — "serra" greens, parchment, terracotta & gold */
   --ink:          #2b2620;   /* main text (warm near-black) */
   --ink-soft:     #4a443b;
-  --muted:        #6f675a;   /* secondary text */
+  --muted:        #625b4d;   /* secondary text (darkened for stronger contrast) */
   --parchment:    #f7f2e9;   /* page background */
   --paper:        #fffdf8;   /* cards / raised surfaces */
   --line:         #e5ddcc;   /* hairline borders */
@@ -67,8 +67,8 @@ body {
   font-family: var(--font-body);
   color: var(--ink);
   background: var(--parchment);
-  line-height: 1.65;
-  font-size: 1.02rem;
+  line-height: 1.72;
+  font-size: 1.09rem;               /* larger base text — easier for all ages */
   -webkit-font-smoothing: antialiased;
 }
 
@@ -123,7 +123,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .nav__links { display: flex; align-items: center; gap: .2rem; list-style: none; margin: 0; padding: 0; }
 .nav__links a {
-  display: inline-block; padding: .5rem .7rem; border-radius: 8px; font-size: .95rem;
+  display: inline-block; padding: .6rem .85rem; border-radius: 8px; font-size: 1.02rem;
   color: var(--ink-soft); text-decoration: none; font-weight: 500;
 }
 .nav__links a:hover { background: var(--forest-soft); color: var(--forest-dark); }

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore &amp; Play — The Guerra Family of Freixo da Serra</title>
+  <meta name="description" content="Family-friendly activities: find Freixo da Serra on the map, match the ancestors, and take a short family-history trivia quiz.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 6 10v12c0 11 8 18 18 23 10-5 18-12 18-23V10z' fill='%232f5d50'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Leaflet (interactive map) via CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    /* Scoped styles for the Explore activities (reuse the site colour tokens). */
+    #village-map{height:min(60vh,460px);border-radius:var(--radius);border:1px solid var(--line);z-index:0}
+    #map-levels{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0}
+    .match-cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+    .match-col{display:flex;flex-direction:column;gap:.6rem}
+    .match-item{font:inherit;text-align:left;cursor:pointer;background:var(--paper);border:1.5px solid var(--line);
+      border-radius:10px;padding:.8rem .9rem;transition:transform .08s ease,border-color .12s ease}
+    .match-item:hover{border-color:var(--forest)}
+    .match-item.is-sel{border-color:var(--terracotta);background:#fff5ec}
+    .match-item.is-solved{border-color:var(--st-confirmed);background:var(--st-confirmed-bg);color:var(--st-confirmed);cursor:default}
+    .match-item.is-wrong{border-color:var(--st-living);background:var(--st-living-bg);animation:shake .4s}
+    @keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+    .match-status{margin-top:1rem;font-size:1rem}
+    .trivia-q{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:1.1rem 1.2rem;margin-bottom:1rem}
+    .trivia-prompt{font-size:1.1rem;margin:0 0 .7rem}
+    .trivia-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+    .trivia-opt{justify-content:flex-start;text-align:left}
+    .trivia-opt.is-correct{background:var(--st-confirmed-bg);border-color:var(--st-confirmed);color:var(--st-confirmed)}
+    .trivia-opt.is-wrong{background:var(--st-living-bg);border-color:var(--st-living);color:var(--st-living)}
+    .trivia-score{font-size:1.05rem;margin-top:.4rem}
+    @media (max-width:560px){ .match-cols{grid-template-columns:1fr} .trivia-opts{grid-template-columns:1fr} }
+  </style>
+</head>
+<body data-page="explore">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="section">
+      <div class="wrap measure">
+        <p class="eyebrow">For the whole family — kids to grandparents</p>
+        <h1>Explore &amp; Play</h1>
+        <p class="lead">Three simple, friendly ways to get to know where our family comes from. No account, no
+           scorekeeping pressure — just find the village, match the ancestors, and test what you know.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Village Map Game ===================== -->
+    <section class="section section--tint" style="padding-top:1.5rem">
+      <div class="wrap">
+        <p class="eyebrow">Activity 1</p>
+        <h2>🗺️ Find the Village</h2>
+        <p class="measure">Freixo da Serra is a tiny mountain village in central Portugal. Use the buttons to zoom
+           from all of Portugal down to the village itself — then tap the marker to say hello to home.</p>
+        <div id="map-levels" aria-label="Zoom levels"></div>
+        <div id="village-map" role="application" aria-label="Map showing Freixo da Serra in Portugal"></div>
+        <p class="muted" style="font-size:.85rem;margin-top:.6rem">Map tiles &copy; OpenStreetMap contributors.
+           Location is approximate. Tip: tap the map once to enable scroll-zoom.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Match the Ancestor ===================== -->
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Activity 2</p>
+        <h2>🧩 Match the Ancestor</h2>
+        <p class="measure">Tap a name on the left, then tap the clue on the right that belongs to them. Green means
+           you got it! (Ancestors come straight from the family tree.)</p>
+        <div id="match-game" aria-live="polite"></div>
+        <div class="btn-row" style="margin-top:1rem">
+          <button class="btn btn--ghost btn--sm" id="match-reset" type="button">Shuffle &amp; play again</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Family Trivia ===================== -->
+    <section class="section section--tint">
+      <div class="wrap">
+        <p class="eyebrow">Activity 3</p>
+        <h2>❓ Family Trivia</h2>
+        <p class="measure">Five quick questions about the village, the mountains, and the family's journey. Tap an
+           answer to see if you're right.</p>
+        <div id="trivia" aria-live="polite" style="margin-top:1rem"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap callout" style="display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center">
+        <div style="flex:1;min-width:16rem">
+          <h3>Learned something new?</h3>
+          <p class="mb-0">Every fact here came from real family research. Add a story, a photo, or a correction and
+             help the next generation learn even more.</p>
+        </div>
+        <a class="btn btn--primary" href="contribute.html">Share what you know</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/main.js"></script>
+  <!-- Leaflet library (CDN) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="data/family.js"></script>
+  <script src="assets/js/explore.js"></script>
+</body>
+</html>

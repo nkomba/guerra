@@ -36,6 +36,9 @@
 window.GUERRA_DATA = {
 
   /* ---- BRANCHES ------------------------------------------------------ */
+  /* Each PERSON may also carry a "migration" tag used for tree colour-coding
+     and the games: "portugal" (default, stayed), "us", or "brazil". Only the
+     people who emigrated need the tag; everyone else defaults to Portugal. */
   branches: [
     {
       id: "casa-do-alto",
@@ -44,6 +47,14 @@ window.GUERRA_DATA = {
       description: "The best-documented line of the family, farming the high ground above the village. This branch anchors most of the confirmed records in the tree.",
       keyAncestors: "João Guerra & Maria dos Santos → Manuel Guerra & Rosa Nunes",
       migration: "Remained rooted in Freixo da Serra through the 19th century, with later members moving to Gouveia town and Lisbon for work in the wool trade."
+    },
+    {
+      id: "ramo-eua",
+      name: "From Freixo da Serra to America (United States)",
+      lead: "The family's principal emigration story — Guerra relatives who crossed the Atlantic to the United States.",
+      description: "The largest and most significant migration branch of the family. Like many from mainland Beira Alta, our people left the Serra da Estrela for the United States — most often the textile cities of New England (Fall River, New Bedford, Lowell, Providence) and later New Jersey. This is the branch that carries the family into its American generations.",
+      keyAncestors: "[U.S. emigrant ancestor — name to add] (arrived c. 19—)",
+      migration: "Freixo da Serra → port of departure → Ellis Island / New York → New England textile cities (and later New Jersey). Passenger manifests after 1906 often name the exact village of origin."
     },
     {
       id: "ramo-antonia",
@@ -91,7 +102,7 @@ window.GUERRA_DATA = {
       living: false, status: "confirmed",
       birth: { date: "12 Mar 1848", place: "Freixo da Serra, Gouveia, Portugal" },
       death: { date: "1922", place: "Freixo da Serra, Gouveia, Portugal" },
-      parents: ["p1", "p2"], spouses: ["p5"], children: ["p6", "p7", "p8"],
+      parents: ["p1", "p2"], spouses: ["p5"], children: ["p6", "p7", "p8", "p16"],
       notes: "SAMPLE ENTRY. Head of the Casa do Alto in the late 19th century. Baptism record reviewed and confirms parents and date.",
       sources: ["Baptism register, Freixo da Serra parish, 1848", "Civil death record, Gouveia, 1922"]
     },
@@ -109,7 +120,7 @@ window.GUERRA_DATA = {
       living: false, status: "confirmed",
       birth: { date: "1852", place: "Figueiró da Serra, Gouveia, Portugal" },
       death: { date: "1930", place: "Freixo da Serra, Gouveia, Portugal" },
-      parents: [], spouses: ["p3"], children: ["p6", "p7", "p8"],
+      parents: [], spouses: ["p3"], children: ["p6", "p7", "p8", "p16"],
       notes: "SAMPLE ENTRY. Married Manuel Guerra in 1874. Born in the neighbouring parish of Figueiró da Serra.",
       sources: ["Parish marriage register, 1874"]
     },
@@ -135,7 +146,7 @@ window.GUERRA_DATA = {
     },
     {
       id: "p7", name: "Joaquim Guerra", sex: "M", gen: 3, branch: "ramo-brasil",
-      living: false, status: "unverified",
+      migration: "brazil", living: false, status: "unverified",
       birth: { date: "1879", place: "Freixo da Serra, Gouveia, Portugal" },
       death: { date: "unknown", place: "Brazil (presumed)" },
       parents: ["p3", "p5"], spouses: [], children: [],
@@ -150,6 +161,26 @@ window.GUERRA_DATA = {
       parents: ["p3", "p5"], spouses: [], children: [],
       notes: "SAMPLE ENTRY. Baptism located; later life in Seia known only from family accounts.",
       sources: ["Baptism register, Freixo da Serra parish, 1882"]
+    },
+
+    /* ---- U.S. EMIGRANT BRANCH (placeholders — fill in from records) ---- */
+    {
+      id: "p16", name: "[U.S. emigrant ancestor — name to add]", sex: "?", gen: 3, branch: "ramo-eua",
+      migration: "us", living: false, status: "unverified",
+      birth: { date: "[birth year — to add]", place: "Freixo da Serra, Gouveia, Portugal" },
+      death: { date: "[to add]", place: "[U.S. city / state — to add]" },
+      parents: ["p3", "p5"], spouses: [], children: ["p17"],
+      notes: "PLACEHOLDER — the family's U.S. emigrant. Fill in from records: full name; year of departure and arrival; port of departure; ship name; Ellis Island / New York manifest reference; first U.S. city and state (often a New England textile city such as Fall River, New Bedford, Lowell, or Providence, or later New Jersey); naturalization details.",
+      sources: ["To add: Ellis Island / New York passenger manifest (post-1906 lists the village of origin)", "To add: U.S. Census 1920 / 1930", "To add: Petition for Naturalization"]
+    },
+    {
+      id: "p17", name: "[U.S.-born descendant — name to add]", sex: "?", gen: 4, branch: "ramo-eua",
+      migration: "us", living: false, status: "unverified",
+      birth: { date: "[to add]", place: "[U.S. state — to add]" },
+      death: { date: "", place: "" },
+      parents: ["p16"], spouses: [], children: [],
+      notes: "PLACEHOLDER — first American-born generation of the family. Replace with a real relative (mark living:true, with consent, if they may be alive).",
+      sources: []
     },
     {
       id: "p11", name: "Amélia Figueiredo", sex: "F", gen: 3, branch: "casa-do-alto",
